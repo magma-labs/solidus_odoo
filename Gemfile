@@ -6,7 +6,6 @@ gem 'solidus', github: 'solidusio/solidus', branch: 'v2.4'
 gem 'solidus_auth_devise', '~> 1.0'
 
 group :test, :development do
-  gem 'cucumber-rails', require: false
   gem 'rspec-rails', '~> 3.0.0'
 end
 
