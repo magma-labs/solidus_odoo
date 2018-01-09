@@ -14,13 +14,7 @@ module SolidusOdoo
       end
 
       def add_ooor_configuration
-        source_root File.expand_path("..", __FILE__)
-
-        desc "Creates an Ooor configuration in your application."
-
-        def copy_configuration
-          template "ooor.yml", "config/ooor.yml"
-        end
+        run 'bundle exec rails g ooor:install'
       end
 
       def add_migrations
