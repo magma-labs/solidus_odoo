@@ -13,19 +13,22 @@ Gem::Specification.new do |s|
   s.email       = ['alberto.mendoza@magmalabs.io', 'mumo.crls@gmail.com']
 
   s.files = Dir["{app,config,db,lib}/**/*", 'LICENSE', 'Rakefile', 'README.md']
-  s.test_files = Dir['test/**/*']
+  solidus_version = ['>= 1.0', '< 3']
 
-  s.add_dependency 'solidus', '~> 2.4'
+  s.add_dependency 'solidus_core', solidus_version
+  s.add_dependency 'solidus_backend', solidus_version
+  s.add_dependency 'solidus_api', solidus_version
+  s.add_dependency 'solidus_support'
 
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'poltergeist'
   s.add_development_dependency 'coffee-rails'
   s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'factory_girl'
+  s.add_development_dependency 'factory_bot'
+  s.add_development_dependency 'factory_bot_rails'
   s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'rubocop', '0.49.0'
-  s.add_development_dependency 'rubocop-rspec', '1.4.0'
+  s.add_development_dependency 'rubocop'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'sqlite3'
 end
