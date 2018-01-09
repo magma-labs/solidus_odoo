@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 $:.push File.expand_path('../lib', __FILE__)
 require 'solidus_odoo/version'
 
@@ -8,9 +9,8 @@ Gem::Specification.new do |s|
   s.summary     = 'This summary is very well detailed'
   s.description = 'This is a extention is for a solidus integration with odoo'
   s.license     = 'BSD-3-Clause'
-
-  s.author    = 'Alberto Mendoza'
-  s.email     = 'alberto.mendoza@magmalabs.io'
+  s.authors     = ['Alberto Mendoza', 'Mumo Carlos']
+  s.email       = ['alberto.mendoza@magmalabs.io', 'mumo.crls@gmail.com']
 
   s.files = Dir["{app,config,db,lib}/**/*", 'LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
