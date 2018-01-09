@@ -1,0 +1,5 @@
+development:
+  database: magmalabs1
+  username: 'alberto.mendoza@magmalabs.io'
+  password: Please123
+  url: https://magmalabs1.odoo.com

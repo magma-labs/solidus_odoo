@@ -13,6 +13,16 @@ module SolidusOdoo
         inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/solidus_odoo\n", before: /\*\//, verbose: true
       end
 
+      def add_ooor_configuration
+        source_root File.expand_path("..", __FILE__)
+
+        desc "Creates an Ooor configuration in your application."
+
+        def copy_configuration
+          template "ooor.yml", "config/ooor.yml"
+        end
+      end
+
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=solidus_odoo'
       end
