@@ -13,6 +13,10 @@ module SolidusOdoo
         inject_into_file 'vendor/assets/stylesheets/spree/backend/all.css', " *= require spree/backend/solidus_odoo\n", before: /\*\//, verbose: true
       end
 
+      def add_ooor_configuration
+        run 'bundle exec rails g ooor:install'
+      end
+
       def add_migrations
         run 'bundle exec rake railties:install:migrations FROM=solidus_odoo'
       end

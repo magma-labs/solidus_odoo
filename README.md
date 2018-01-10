@@ -19,6 +19,27 @@ bundle
 bundle exec rails g solidus_odoo:install
 ```
 
+Odoo Gem
+--------
+
+The ooor gem will generate an `ooor.yml` in your `config/` path
+You will have to configure this file with your data. 
+Example:
+```
+development:
+  database: XXXXXXXXXXX
+  username: XXXXXXXXXXX
+  password: XXXXXXXXXXX
+  url:      XXXXXXXXXXX
+```
+
+Here you will place all the necessary credentials to get access to your `odoo` account.
+
+For more info on Odoo you can [Click here](https://www.odoo.com/)
+
+For More information about the API, you can consult the _odoo_ documentation here:
+[Odoo Api Dcumentation](https://www.odoo.com/documentation/11.0/webservices/odoo.html)
+
 Testing
 -------
 
