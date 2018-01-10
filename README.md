@@ -33,7 +33,12 @@ development:
   url:      XXXXXXXXXXX
 ```
 
-Here you will place all the necessary credentials to get access to your `odoo` account
+Here you will place all the necessary credentials to get access to your `odoo` account.
+
+For more info on Odoo you can [Click here](https://www.odoo.com/)
+
+For More information about the API, you can consult the _odoo_ documentation here:
+[Odoo Api Dcumentation](https://www.odoo.com/documentation/11.0/webservices/odoo.html)
 
 Testing
 -------
