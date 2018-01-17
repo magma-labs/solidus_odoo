@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'solidus_core', solidus_version
   s.add_dependency 'solidus_backend', solidus_version
   s.add_dependency 'solidus_api', solidus_version
-  s.add_dependency 'ooor'
+  s.add_runtime_dependency 'ooor'
   s.add_dependency 'solidus_support'
 
   s.add_development_dependency 'capybara'
