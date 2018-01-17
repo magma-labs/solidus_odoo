@@ -12,6 +12,13 @@ Add solidus_odoo to your Gemfile:
 gem 'solidus_odoo'
 ```
 
+Add ooor to your Gemfile:
+
+```ruby
+gem 'ooor', git: 'https://github.com/akretion/ooor.git'
+```
+For more info on Ooor gem you can [Click here](https://github.com/akretion/ooor)
+
 Bundle your dependencies and run the installation generator:
 
 ```shell
