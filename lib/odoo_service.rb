@@ -15,22 +15,7 @@ class OdooService
   end
 
   def partner
-    @partner ||= ResPartner.create(partner_attributes)
-  end
-
-  def partner_attributes
-    {
-      name: order.name,
-      street: order.ship_address.address1,
-      city: order.ship_address.city,
-      state_id: state.id,
-      zip: order.ship_address.zipcode,
-      country_id: country.id,
-      phone: order.ship_address.phone,
-      email: order.email,
-      function: "Not Defined `" + order.number,
-      title_id: title.id
-    }
+    @partner ||= ResPartner.create(Partner.new(order, state, country, title).partner_information)
   end
 
   def state
