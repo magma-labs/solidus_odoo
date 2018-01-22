@@ -9,6 +9,7 @@ module Odoo
 
     def initialize(order)
       @order = order
+      @patner = partner
     end
 
     def save
