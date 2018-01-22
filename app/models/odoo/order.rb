@@ -4,6 +4,7 @@ module Odoo
 
     def self.create(order)
       sale_order = self.new(order)
+      sale_order.partner
       sale_order.save
     end
 
