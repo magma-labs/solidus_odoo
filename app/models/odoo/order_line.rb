@@ -16,7 +16,6 @@ module Odoo
     end
 
     def product
-      binding.pry
       @product ||= ProductProduct.find(default_code: line_item.product.slug).first
     end
 
