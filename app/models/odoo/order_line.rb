@@ -16,7 +16,8 @@ module Odoo
     end
 
     def product
-      @product ||= ProductProduct.find(name: line_item.name).first
+      binding.pry
+      @product ||= ProductProduct.find(default_code: line_item.product.slug).first
     end
 
     private
