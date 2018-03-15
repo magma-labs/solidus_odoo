@@ -16,7 +16,7 @@ module Odoo
     end
 
     def product
-      @product ||= ProductProduct.find(name: line_item.name).first
+      @product ||= ProductProduct.find(default_code: line_item.product.slug).first
     end
 
     private
@@ -24,7 +24,7 @@ module Odoo
       {
         name: product.name,
         product_id: product.id,
-        price_unit: product.list_price,
+        price_unit: line_item.total.to_s,
         product_uom_qty: line_item.quantity
       }
     end
