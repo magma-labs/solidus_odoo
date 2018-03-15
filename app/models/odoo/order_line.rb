@@ -24,7 +24,7 @@ module Odoo
       {
         name: product.name,
         product_id: product.id,
-        price_unit: product.list_price,
+        price_unit: line_item.total.to_s,
         product_uom_qty: line_item.quantity
       }
     end
