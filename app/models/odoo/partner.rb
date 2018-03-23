@@ -7,6 +7,7 @@ module Odoo
       partner = self.new(order)
       odoo_partner = partner.retrieve
       partner.create unless odoo_partner
+      partner.update unless !odoo_partner
       odoo_partner
     end
 
@@ -16,6 +17,20 @@ module Odoo
 
     def retrieve
       ResPartner.find(email: order.email).first
+    end
+
+    def update
+      rp = ResPartner.find(email: order.email).first
+      rp.name = order.name
+      rp.street = order.ship_address.address1
+      rp.city = order.ship_address.city
+      rp.state_id = state.id
+      rp.zip = order.ship_address.zipcode
+      rp.country_id = country.id
+      rp.phone = order.ship_address.phone
+      rp.email = order.email
+      rp.function = order.number
+      rp.save
     end
 
     def create
