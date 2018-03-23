@@ -1,21 +1,26 @@
 module Odoo
   class Partner
 
-    attr_accessor :order, :state, :country
+    attr_accessor :order, :state, :country, :odoo_partner
 
     def self.find_or_create(order)
       partner = self.new(order)
-      odoo_partner = partner.retrieve
-      partner.create unless odoo_partner
-      odoo_partner
+      partner.odoo_partner && partner.update || partner.create
+      partner.odoo_partner
     end
 
     def initialize(order)
       @order = order
+      @odoo_partner = retrieve
     end
 
     def retrieve
       ResPartner.find(email: order.email).first
+    end
+
+    def update
+      odoo_partner.update(partner_attributes)
+      odoo_partner.save
     end
 
     def create
