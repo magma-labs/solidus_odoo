@@ -5,10 +5,8 @@ module Odoo
 
     def self.find_or_create(order)
       partner = self.new(order)
-      odoo_partner = partner.retrieve
-      partner.create unless odoo_partner
-      partner.update if odoo_partner
-      odoo_partner
+      partner.odoo_partner && partner.update || partner.create
+      partner.odoo_partner
     end
 
     def initialize(order)
@@ -21,9 +19,8 @@ module Odoo
     end
 
     def update
-      res_partner = odoo_partner
-      res_partner.update(partner_attributes)
-      res_partner.save
+      odoo_partner.update(partner_attributes)
+      odoo_partner.save
     end
 
     def create
