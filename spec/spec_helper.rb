@@ -1,5 +1,6 @@
 # Run Coverage report
 require 'simplecov'
+require 'solidus_odoo/factories'
 SimpleCov.start do
   add_filter 'spec/dummy'
   add_group 'Controllers', 'app/controllers'
