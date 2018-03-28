@@ -10,7 +10,7 @@ gem 'solidus', github: 'solidusio/solidus', branch: 'v2.4'
 gem 'solidus_auth_devise', '~> 1.0'
 
 group :test, :development do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails'
 end
 
 gemspec
