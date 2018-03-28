@@ -11,6 +11,7 @@ gem 'solidus_auth_devise', '~> 1.0'
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 gemspec
