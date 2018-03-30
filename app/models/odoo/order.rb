@@ -13,7 +13,9 @@ module Odoo
     end
 
     def save
-      SaleOrder.create(partner_id: partner.id, order_line: order_lines)
+      SaleOrder.create(partner_id: partner.id,
+                       order_line: order_lines,
+                       name: order.number)
     end
 
     def partner
