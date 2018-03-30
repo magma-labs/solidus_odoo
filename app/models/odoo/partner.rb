@@ -1,12 +1,13 @@
 module Odoo
   class Partner
 
-    attr_accessor :order, :state, :country, :odoo_partner
+    attr_accessor :order, :odoo_partner, :invoice_partner, :delivery_partner
 
     def self.find_or_create(order)
       partner = self.new(order)
-      partner.odoo_partner && partner.update || partner.create
-      partner.odoo_partner
+      partner.create unless partner.odoo_partner
+      partner.create_children
+      partner
     end
 
     def initialize(order)
@@ -18,37 +19,38 @@ module Odoo
       ResPartner.find(email: order.email).first
     end
 
-    def update
-      odoo_partner.update(partner_attributes)
-      odoo_partner.save
+    def create
+      @odoo_partner = ResPartner.create partner_attributes(order.ship_address)
     end
 
-    def create
-      ResPartner.create(partner_attributes)
+    def create_children
+      @invoice_partner = ResPartner.create partner_attributes(order.bill_address).merge(name: "billing", type: "invoice", parent_id: odoo_partner.id)
+      @delivery_partner = ResPartner.create partner_attributes(order.ship_address).merge(name: "shipping", type: "delivery", parent_id: odoo_partner.id)
     end
 
     private
-    def partner_attributes
+    def partner_attributes(address)
       {
         name: order.name,
-        street: order.ship_address.address1,
-        city: order.ship_address.city,
-        state_id: state.id,
-        zip: order.ship_address.zipcode,
-        country_id: country.id,
-        phone: order.ship_address.phone,
-        email: order.email,
-        function: order.number #provisional while testing
+        street: address.address1,
+        city: address.city,
+        state_id: state(address).id,
+        zip: address.zipcode,
+        country_id: country(address).id,
+        phone: address.phone,
+        email: order.email
       }
     end
 
-    def state
-      @state ||= State.find(order)
+    def state(address)
+      State.find(address)
     end
 
-    def country
-      @country ||= Country.find(order)
+    def country(address)
+      Country.find(address)
     end
 
   end
 end
+
+
