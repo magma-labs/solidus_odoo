@@ -6,6 +6,7 @@ module Odoo
     def self.find_or_create(order)
       partner = self.new(order)
       partner.create unless partner.odoo_partner
+      partner.create_children
       partner
     end
 
@@ -20,8 +21,11 @@ module Odoo
 
     def create
       @odoo_partner = ResPartner.create partner_attributes(order.ship_address)
-      @invoice_partner = ResPartner.create partner_attributes(order.bill_address).merge(name: "billing", type: "invoice", parent_id: @odoo_partner.id)
-      @delivery_partner = ResPartner.create partner_attributes(order.ship_address).merge(name: "shipping", type: "delivery", parent_id: @odoo_partner.id)
+    end
+
+    def create_children
+      @invoice_partner = ResPartner.create partner_attributes(order.bill_address).merge(name: "billing", type: "invoice", parent_id: odoo_partner.id)
+      @delivery_partner = ResPartner.create partner_attributes(order.ship_address).merge(name: "shipping", type: "delivery", parent_id: odoo_partner.id)
     end
 
     private
