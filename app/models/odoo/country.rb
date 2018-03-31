@@ -1,7 +1,7 @@
 module Odoo
   class Country
-    def self.find(order)
-      country_name = order.ship_address.country.name
+    def self.find(address)
+      country_name = address.country.name
       ResCountry.find(name: country_name).first
     end
   end
