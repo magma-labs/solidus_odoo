@@ -29,4 +29,3 @@ module Odoo
     end
   end
 end
-

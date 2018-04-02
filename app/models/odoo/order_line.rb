@@ -20,7 +20,6 @@ module Odoo
     end
 
     private
-
     def item_information
       {
         name: product.name,
@@ -29,5 +28,6 @@ module Odoo
         product_uom_qty: line_item.quantity
       }
     end
+
   end
 end
