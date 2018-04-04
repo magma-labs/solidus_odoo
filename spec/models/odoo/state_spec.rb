@@ -5,7 +5,6 @@ describe Odoo::Country do
   Ooor.new(url: 'https://magmalabs1.odoo.com', database: 'magmalabs1', username: 'alberto.mendoza@magmalabs.io', password: 'Please123')
 
   context 'when an order is completed in solidus and Sale Order line is created in Odoo' do
-
     it 'should have a state' do
       address = order.ship_address
       state_name = address.state.name
