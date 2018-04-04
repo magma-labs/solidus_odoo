@@ -7,7 +7,7 @@ describe Odoo::Country do
 
     it 'should have a country' do
       address = order.ship_address.country.name
-      country = ResCountry.find(['name', '=', order.ship_address.country.name]).first.name
+      country = ResCountry.find(['name', '=', address]).first.name
       expect('United States').to eq(country)
     end
   end
