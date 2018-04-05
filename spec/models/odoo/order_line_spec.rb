@@ -13,5 +13,14 @@ describe Odoo::OrderLine do
     it 'should find product in odoo' do
       expect(ProductProduct.find(default_code: product.slug)).to be_truthy
     end
+
+    it 'should complete an order' do
+      product = order.products.last
+      product.name = "Samsung Tv"
+      product.slug = "samsung-tv"
+      product.save!
+      product.reload
+      order.reload
+    end
   end
 end
