@@ -6,7 +6,6 @@ describe Odoo::OrderLine do
   let(:product) { create(:product, shipping_category: shipping_category) }
   let(:shipping_category) { create(:shipping_category, shipping_methods: [shipping_method]) }
   let(:shipping_method) { create(:shipping_method) }
-  Ooor.new(url: 'https://magmalabs1.odoo.com', database: 'magmalabs1', username: 'alberto.mendoza@magmalabs.io', password: 'Please123')
 
   context 'When a spree order is sent to odoo' do
     before :each do
