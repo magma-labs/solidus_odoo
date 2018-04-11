@@ -9,7 +9,6 @@ describe Odoo::OrderLine do
 
   context 'When a spree order is sent to odoo' do
     before :each do
-      binding.pry
       calculator = product.shipping_category.shipping_methods.first.calculator
       calculator.preferred_amount = "0.0"
       calculator.save
@@ -22,18 +21,6 @@ describe Odoo::OrderLine do
     it 'should find product in odoo' do
       expect(ProductProduct.find(default_code: 'product-3-935')).to be_truthy
     end
-
-    it 'should complete an order' do
-      binding.pry
-      product = order.products.last
-      product.name = "Samsung Tv"
-      product.save!
-      product.slug = "samsung-tv"
-      product.save!
-      product.reload
-      order.reload
-      OdooService.create_order(order)
-      odoo_order = SaleOrder.find(['name', '=', order.number])
-    end
   end
+
 end
