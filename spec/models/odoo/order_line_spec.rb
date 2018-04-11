@@ -22,5 +22,4 @@ describe Odoo::OrderLine do
       expect(ProductProduct.find(default_code: 'product-3-935')).to be_truthy
     end
   end
-
 end

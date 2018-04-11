@@ -13,7 +13,6 @@ describe Odoo::Order do
       product.save!
       product.reload
       order.reload
-      binding.pry
       OdooService.create_order(order)
 
       expect(SaleOrder.last.amount_total).to eq(order.total - order.ship_total)
