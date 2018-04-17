@@ -1,6 +1,5 @@
 module Odoo
   class Partner
-
     attr_accessor :order, :odoo_partner, :invoice_partner, :delivery_partner
 
     def self.find_or_create(order)
@@ -29,6 +28,7 @@ module Odoo
     end
 
     private
+
     def partner_attributes(address)
       {
         name: order.name,
@@ -49,8 +49,5 @@ module Odoo
     def country(address)
       Country.find(address)
     end
-
   end
 end
-
-

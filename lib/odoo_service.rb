@@ -3,4 +3,3 @@ class OdooService
     Odoo::Order.create(order)
   end
 end
-
