@@ -17,7 +17,9 @@ module Odoo
                        order_line: order_lines,
                        name: order.number,
                        invoice_partner_id: partner.invoice_partner.id,
-                       delivery_partner_id: partner.delivery_partner.id)
+                       delivery_partner_id: partner.delivery_partner.id,
+                       state: 'sale',
+                       confirmation_date: DateTime.now.to_s(:db))
     end
 
     def partner
